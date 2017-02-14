@@ -23,6 +23,7 @@
 #include <wrl.h>
 #include "ChiliException.h"
 #include "Colors.h"
+#include "Rect.h"
 
 #define CHILI_GFX_EXCEPTION( hr,note ) Graphics::Exception( hr,note,_CRT_WIDE(__FILE__),__LINE__ )
 
@@ -62,6 +63,10 @@ public:
 	void DrawRectDim( int x0,int y0,int width,int height,Color c )
 	{
 		DrawRect( x0,y0,x0 + width,y0 + height,c );
+	}
+	void DrawRect(const Rect& r, Color c)
+	{
+		DrawRect(int(r.left), int(r.top), int(r.right), int(r.bottom), c);
 	}
 	~Graphics();
 private:
