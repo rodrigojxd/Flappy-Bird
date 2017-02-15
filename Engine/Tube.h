@@ -12,4 +12,5 @@ private:
 public:
 	Tube(const Vec2& body_dim, const Vec2& mouth_dim, const Vec2& pos);
 	void Draw(Graphics& gfx);
+	void Update(int delta_x);
 };

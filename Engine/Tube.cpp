@@ -12,3 +12,9 @@ void Tube::Draw(Graphics& gfx)
 	gfx.DrawRect(mouth, color_mounth);
 	gfx.DrawRect(body, color_body);
 }
+
+void Tube::Update(int delta_x)
+{
+	mouth.pos.x -= delta_x;
+	body.pos.x -= delta_x;
+}
