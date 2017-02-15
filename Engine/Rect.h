@@ -4,11 +4,10 @@
 class Rect
 {
 public:
-	float top;
-	float bottom;
-	float left;
-	float right;
+	int width;
+	int height;
+	Vec2 pos;
 public:
-	Rect(float top, float bottom, float left, float right);
-	Rect(const Vec2& topLeft, const Vec2& bottomRight);
+	Rect(int width, int height, const Vec2& pos);
+	Rect(const Vec2& dimensions, const Vec2& pos);
 };

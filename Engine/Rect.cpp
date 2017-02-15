@@ -1,17 +1,15 @@
 #include "Rect.h"
 
-Rect::Rect(float top, float bottom, float left, float right)
+Rect::Rect(int width, int height, const Vec2& pos)
 {
-	this->top = top;
-	this->bottom = bottom;
-	this->left = left;
-	this->right = right;
+	this->width = width;
+	this->height = height;
+	this->pos = pos;
 }
 
-Rect::Rect(const Vec2 & topLeft, const Vec2 & bottomRight)
+Rect::Rect(const Vec2& dimensions, const Vec2& pos)
 {
-	this->top = topLeft.y;
-	this->bottom = bottomRight.y;
-	this->left = topLeft.x;
-	this->right = bottomRight.x;
+	this->width = dimensions.x;
+	this->height = dimensions.y;
+	this->pos = pos;
 }

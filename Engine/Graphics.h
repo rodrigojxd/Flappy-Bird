@@ -66,7 +66,7 @@ public:
 	}
 	void DrawRect(const Rect& r, Color c)
 	{
-		DrawRect(int(r.left), int(r.top), int(r.right), int(r.bottom), c);
+		DrawRectDim(r.pos.x, r.pos.y, r.width, r.height, c);
 	}
 	~Graphics();
 private:
