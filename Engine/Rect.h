@@ -10,4 +10,5 @@ public:
 public:
 	Rect(int width, int height, const Vec2& pos);
 	Rect(const Vec2& dimensions, const Vec2& pos);
+	Rect() = default;
 };
