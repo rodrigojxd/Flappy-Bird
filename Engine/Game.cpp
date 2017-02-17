@@ -39,10 +39,10 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	
+	level.Update(2);
 }
 
 void Game::ComposeFrame()
 {
-
+	level.Draw(gfx);
 }

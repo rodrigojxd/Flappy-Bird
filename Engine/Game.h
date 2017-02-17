@@ -23,6 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Level.h"
 
 class Game
 {
@@ -43,4 +44,5 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	Level level;
 };
