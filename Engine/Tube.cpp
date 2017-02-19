@@ -17,10 +17,6 @@ Tube::Tube(const Vec2& body_dim, const Vec2& mouth_dim, int face, const Vec2& po
 
 void Tube::Draw(Graphics& gfx)
 {
-	if (mouth.pos.x < 0 || mouth.pos.x + mouth.width > 800)
-	{
-		return;
-	}
 	gfx.DrawRect(mouth, color_mounth);
 	gfx.DrawRect(body, color_body);
 }
