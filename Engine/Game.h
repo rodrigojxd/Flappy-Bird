@@ -24,6 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Level.h"
+#include "Bird.h"
 
 class Game
 {
@@ -45,4 +46,5 @@ private:
 	/*  User Variables              */
 	/********************************/
 	Level level;
+	Bird bird;
 };

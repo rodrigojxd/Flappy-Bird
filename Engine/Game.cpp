@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	bird({ 30, 30, {100, 100} })
 {
 
 }
@@ -40,9 +41,11 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	level.Update(2);
+	bird.Update(wnd.kbd);
 }
 
 void Game::ComposeFrame()
 {
 	level.Draw(gfx);
+	bird.Draw(gfx);
 }
