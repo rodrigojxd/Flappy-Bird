@@ -9,6 +9,7 @@ public:
 	Bird(const Rect& rect);
 	void Draw(Graphics& gfx);
 	void Update(const Keyboard& kbd);
+	bool isCollidingWith(const class Level& level);
 private:
 	Rect body;
 	static constexpr Color color = Colors::Yellow;

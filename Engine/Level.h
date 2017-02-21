@@ -15,4 +15,5 @@ public:
 	void Update(int delta_x);
 	void Draw(Graphics& gfx);
 	void Reset(Tube& tube_top, Tube& tube_bottom, int previous);
+	bool getCollided(const Rect& rect) const;
 };

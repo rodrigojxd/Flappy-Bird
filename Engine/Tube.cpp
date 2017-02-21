@@ -27,7 +27,12 @@ void Tube::Update(int delta_x)
 	body.pos.x -= delta_x;
 }
 
-int Tube::GetExtremeLeftX()
+bool Tube::isCollidingWith(const Rect & rect) const
+{
+	return mouth.isCollidingWith(rect) || body.isCollidingWith(rect);
+}
+
+int Tube::GetExtremeLeftX() const
 {
 	return mouth.pos.x + mouth.width;
 }

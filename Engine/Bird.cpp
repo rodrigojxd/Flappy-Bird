@@ -1,4 +1,5 @@
 #include "Bird.h"
+#include "Level.h"
 
 Bird::Bird(const Rect& rect)
 {
@@ -26,4 +27,9 @@ void Bird::Update(const Keyboard & kbd)
 	{
 		//TODO: Game over
 	}
+}
+
+bool Bird::isCollidingWith(const Level & level)
+{
+	return level.getCollided(body);
 }
