@@ -40,12 +40,33 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	level.Update(2);
-	bird.Update(wnd.kbd);
+	switch (gameState)
+	{
+	case Playing:
+	{
+		level.Update(2);
+		bird.Update(wnd.kbd);
+		break;
+	}
+	case NotStarted:
+	{
+		if (wnd.kbd.KeyIsPressed(VK_RETURN))
+		{
+			gameState = Playing;
+		}
+	}
+	}
+	if (bird.isCollidingWith(level) || bird.isOnGround())
+	{
+		gameState = GameOver;
+	}
 }
 
 void Game::ComposeFrame()
 {
-	level.Draw(gfx);
+	if (gameState == Playing)
+	{
+		level.Draw(gfx);
+	}
 	bird.Draw(gfx);
 }

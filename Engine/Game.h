@@ -29,6 +29,13 @@
 class Game
 {
 public:
+	enum GameState
+	{
+		NotStarted,
+		Playing,
+		GameOver
+	};
+public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
@@ -47,4 +54,5 @@ private:
 	/********************************/
 	Level level;
 	Bird bird;
+	GameState gameState = NotStarted;
 };

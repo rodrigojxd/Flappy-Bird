@@ -15,21 +15,21 @@ void Bird::Update(const Keyboard & kbd)
 {
 	if (kbd.KeyIsPressed(VK_SPACE))
 	{
-		vy = 9.89f;
+		vy = 10.0f;
 	}
 
 	vy -= 1.0f;
 	body.pos.y -= int(vy);
-
-	int ground = 600 - body.height;
-
-	if (body.pos.y >= ground)
-	{
-		//TODO: Game over
-	}
+	body.pos.y = max(body.pos.y, 0);
+	body.pos.y = min(body.pos.y, int(Graphics::ScreenHeight) - body.height);
 }
 
 bool Bird::isCollidingWith(const Level & level)
 {
 	return level.getCollided(body);
+}
+
+bool Bird::isOnGround()
+{
+	return body.pos.y >= int(Graphics::ScreenHeight) - body.height;
 }

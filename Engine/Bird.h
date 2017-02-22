@@ -10,6 +10,7 @@ public:
 	void Draw(Graphics& gfx);
 	void Update(const Keyboard& kbd);
 	bool isCollidingWith(const class Level& level);
+	bool isOnGround();
 private:
 	Rect body;
 	static constexpr Color color = Colors::Yellow;
