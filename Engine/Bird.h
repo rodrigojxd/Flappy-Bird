@@ -6,6 +6,7 @@
 class Bird
 {
 public:
+	Bird() = default;
 	Bird(const Rect& rect);
 	void Draw(Graphics& gfx);
 	void Update(const Keyboard& kbd);
@@ -14,5 +15,5 @@ public:
 private:
 	Rect body;
 	static constexpr Color color = Colors::Yellow;
-	float vy = 9.89f;
+	float vy = 10.0f;
 };

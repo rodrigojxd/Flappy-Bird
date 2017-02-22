@@ -24,10 +24,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd ),
-	bird({ 30, 30, {100, 100} })
+	gfx( wnd )
 {
-
+	Reset();
 }
 
 void Game::Go()
@@ -49,9 +48,11 @@ void Game::UpdateModel()
 		break;
 	}
 	case NotStarted:
+	case GameOver:
 	{
 		if (wnd.kbd.KeyIsPressed(VK_RETURN))
 		{
+			Reset();
 			gameState = Playing;
 		}
 	}
@@ -60,6 +61,12 @@ void Game::UpdateModel()
 	{
 		gameState = GameOver;
 	}
+}
+
+void Game::Reset()
+{
+	level = Level();
+	bird = Bird({ 30, 30,{ 100, 100 } });
 }
 
 void Game::ComposeFrame()

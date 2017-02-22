@@ -46,6 +46,7 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	void Reset();
 private:
 	MainWindow& wnd;
 	Graphics gfx;
