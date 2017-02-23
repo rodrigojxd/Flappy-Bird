@@ -10,6 +10,7 @@ private:
 	static constexpr int vGap = 200;
 	static constexpr int hGap = 210;
 	std::mt19937 rng;
+	unsigned char score = 0;
 private:
 	void Reset(Tube& tube_top, Tube& tube_bottom, int previous);
 public:
@@ -17,4 +18,5 @@ public:
 	void Update(int delta_x);
 	void Draw(Graphics& gfx);
 	bool getCollided(const Rect& rect) const;
+	unsigned char GetScore();
 };

@@ -70,16 +70,25 @@ void Game::Reset()
 	bird = Bird({ 34, 24,{ 200, 200 } });
 }
 
+void Game::DrawScore(unsigned char score)
+{
+	SpriteCodex::DrawScoreBoard(10, 10, gfx);
+	SpriteCodex::DrawNumber(score / 10, 120, 10, gfx);
+	SpriteCodex::DrawNumber(score % 10, 137, 10, gfx);
+}
+
 void Game::ComposeFrame()
 {
+	unsigned char score = std::min(int(level.GetScore()), 99);
 	switch (gameState)
 	{
 	case Playing:
 		level.Draw(gfx);
-		SpriteCodex::DrawScoreBoard(10, 10, gfx); //TODO: score
+		DrawScore(score);
 		break;
 	case GameOver:
 		SpriteCodex::DrawGameOver(250, 250, gfx);
+		DrawScore(score);
 		break;
 	case NotStarted:
 		SpriteCodex::DrawPressToStart(160, 250, gfx);

@@ -17,4 +17,6 @@ public:
 	void Update(int delta_x);
 	bool isCollidingWith(const Rect& rect) const;
 	int GetExtremeLeftX() const;
+	int GetExtremeRightX() const;
+	bool birdPassed = false;
 };

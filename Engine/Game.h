@@ -47,6 +47,7 @@ private:
 	/*  User Functions              */
 	/********************************/
 	void Reset();
+	void DrawScore(unsigned char score);
 private:
 	MainWindow& wnd;
 	Graphics gfx;

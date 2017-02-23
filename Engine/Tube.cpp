@@ -34,5 +34,10 @@ bool Tube::isCollidingWith(const Rect & rect) const
 
 int Tube::GetExtremeLeftX() const
 {
+	return mouth.pos.x;
+}
+
+int Tube::GetExtremeRightX() const
+{
 	return mouth.pos.x + mouth.width;
 }

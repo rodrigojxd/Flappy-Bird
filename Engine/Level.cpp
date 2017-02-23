@@ -17,8 +17,14 @@ void Level::Update(int delta_x)
 	{
 		top[i].Update(delta_x);
 		bottom[i].Update(delta_x);
-		if (top[i].GetExtremeLeftX() < 0) {
+		if (top[i].GetExtremeRightX() < 0)
+		{
 			Reset(top[i], bottom[i], 0);
+		}
+		if (top[i].GetExtremeLeftX() < 200 && !top[i].birdPassed) //bird passed the tube
+		{
+			top[i].birdPassed = true;
+			score++;
 		}
 	}
 }
@@ -38,6 +44,7 @@ void Level::Reset(Tube& tube_top, Tube& tube_bottom, int previous)
 	const int top_size = dist(rng);
 	tube_top = Tube({ 30, top_size }, { 36, 15 }, 1, { 800 + previous * hGap, 0 });
 	tube_bottom = Tube({ 30, 600 - vGap - top_size }, { 36, 15 }, 0, { 800 + previous * hGap, vGap + top_size - 15 });
+	tube_top.birdPassed = false;
 }
 
 bool Level::getCollided(const Rect & rect) const
@@ -49,4 +56,9 @@ bool Level::getCollided(const Rect & rect) const
 		collided = collided || bottom[i].isCollidingWith(rect);
 	}
 	return collided;
+}
+
+unsigned char Level::GetScore()
+{
+	return score;
 }
