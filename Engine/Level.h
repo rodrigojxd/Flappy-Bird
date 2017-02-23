@@ -10,10 +10,11 @@ private:
 	static constexpr int vGap = 200;
 	static constexpr int hGap = 210;
 	std::mt19937 rng;
+private:
+	void Reset(Tube& tube_top, Tube& tube_bottom, int previous);
 public:
 	Level();
 	void Update(int delta_x);
 	void Draw(Graphics& gfx);
-	void Reset(Tube& tube_top, Tube& tube_bottom, int previous);
 	bool getCollided(const Rect& rect) const;
 };

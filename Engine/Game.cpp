@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include "SpriteCodex.h"
 
 Game::Game( MainWindow& wnd )
 	:
@@ -66,14 +67,23 @@ void Game::UpdateModel()
 void Game::Reset()
 {
 	level = Level();
-	bird = Bird({ 30, 30,{ 100, 100 } });
+	bird = Bird({ 34, 24,{ 200, 200 } });
 }
 
 void Game::ComposeFrame()
 {
-	if (gameState == Playing)
+	switch (gameState)
 	{
+	case Playing:
 		level.Draw(gfx);
+		SpriteCodex::DrawScoreBoard(10, 10, gfx); //TODO: score
+		break;
+	case GameOver:
+		SpriteCodex::DrawGameOver(250, 250, gfx);
+		break;
+	case NotStarted:
+		SpriteCodex::DrawPressToStart(160, 250, gfx);
+		break;
 	}
 	bird.Draw(gfx);
 }

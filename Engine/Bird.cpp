@@ -1,5 +1,6 @@
 #include "Bird.h"
 #include "Level.h"
+#include "SpriteCodex.h"
 
 Bird::Bird(const Rect& rect)
 {
@@ -8,7 +9,18 @@ Bird::Bird(const Rect& rect)
 
 void Bird::Draw(Graphics & gfx)
 {
-	gfx.DrawRect(body, color);
+	//gfx.DrawRect(body, color);
+	if (tick <= 10)
+		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 0);
+	else if(tick <= 20)
+		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 1);
+	else if(tick <= 30)
+		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 2);
+	tick++;
+	if (tick > 30)
+	{
+		tick = 0;
+	}
 }
 
 void Bird::Update(const Keyboard & kbd)

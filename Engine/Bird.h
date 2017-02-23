@@ -16,4 +16,5 @@ private:
 	Rect body;
 	static constexpr Color color = Colors::Yellow;
 	float vy = 10.0f;
+	unsigned char tick = 0;
 };
