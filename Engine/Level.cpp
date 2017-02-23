@@ -42,8 +42,8 @@ void Level::Reset(Tube& tube_top, Tube& tube_bottom, int previous)
 {
 	std::uniform_int_distribution<int> dist(100, 500 - vGap);
 	const int top_size = dist(rng);
-	tube_top = Tube({ 30, top_size }, { 36, 15 }, 1, { 800 + previous * hGap, 0 });
-	tube_bottom = Tube({ 30, 600 - vGap - top_size }, { 36, 15 }, 0, { 800 + previous * hGap, vGap + top_size - 15 });
+	tube_top = Tube({ 30, top_size }, { 36, 15 }, Tube::Face::Down, { 800 + previous * hGap, 0 });
+	tube_bottom = Tube({ 30, 600 - vGap - top_size }, { 36, 15 }, Tube::Face::Up, { 800 + previous * hGap, vGap + top_size - 15 });
 	tube_top.birdPassed = false;
 }
 
