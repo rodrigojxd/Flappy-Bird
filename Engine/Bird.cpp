@@ -23,13 +23,8 @@ void Bird::Draw(Graphics & gfx)
 	}
 }
 
-void Bird::Update(const Keyboard & kbd)
+void Bird::Update()
 {
-	if (kbd.KeyIsPressed(VK_SPACE))
-	{
-		vy = 10.0f;
-	}
-
 	vy -= 1.0f;
 	body.pos.y -= int(vy);
 	body.pos.y = max(body.pos.y, 0);
@@ -44,4 +39,12 @@ bool Bird::isCollidingWith(const Level & level)
 bool Bird::isOnGround()
 {
 	return body.pos.y >= int(Graphics::ScreenHeight) - body.height;
+}
+
+void Bird::Control(const Keyboard& kbd)
+{
+	if (kbd.KeyIsPressed(VK_SPACE))
+	{
+		vy = 10.0f;
+	}
 }

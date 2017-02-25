@@ -45,7 +45,8 @@ void Game::UpdateModel()
 	case Playing:
 	{
 		level.Update(2);
-		bird.Update(wnd.kbd);
+		bird.Control(wnd.kbd);
+		bird.Update();
 		break;
 	}
 	case NotStarted:
@@ -56,9 +57,20 @@ void Game::UpdateModel()
 			Reset();
 			gameState = Playing;
 		}
+		break;
+	}
+	case NoControl:
+	{
+		level.Update(2);
+		bird.Update();
+		break;
 	}
 	}
-	if (bird.isCollidingWith(level) || bird.isOnGround())
+	if (bird.isCollidingWith(level) && gameState == Playing)
+	{
+		gameState = NoControl;
+	}
+	if (bird.isOnGround())
 	{
 		gameState = GameOver;
 	}
@@ -83,6 +95,7 @@ void Game::ComposeFrame()
 	switch (gameState)
 	{
 	case Playing:
+	case NoControl:
 		level.Draw(gfx);
 		DrawScore(score);
 		break;

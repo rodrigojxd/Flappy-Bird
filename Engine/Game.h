@@ -33,7 +33,8 @@ public:
 	{
 		NotStarted,
 		Playing,
-		GameOver
+		GameOver,
+		NoControl
 	};
 public:
 	Game( class MainWindow& wnd );
