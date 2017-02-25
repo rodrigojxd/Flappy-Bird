@@ -27,6 +27,7 @@ void Bird::Update()
 {
 	vy -= 1.0f;
 	body.pos.y -= int(vy);
+	//Keep the bird inside the screen
 	body.pos.y = max(body.pos.y, 0);
 	body.pos.y = min(body.pos.y, int(Graphics::ScreenHeight) - body.height);
 }

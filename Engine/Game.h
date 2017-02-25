@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Level.h"
 #include "Bird.h"
+#include "Sound.h"
 
 class Game
 {
@@ -58,4 +59,7 @@ private:
 	Level level;
 	Bird bird;
 	GameState gameState = NotStarted;
+	Sound sound_hit;
+	Sound sound_point;
+	unsigned char score = 0;
 };

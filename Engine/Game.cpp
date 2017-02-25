@@ -25,7 +25,9 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	sound_hit(L"Sounds\\hit.wav"),
+	sound_point(L"Sounds\\point.wav")
 {
 	Reset();
 }
@@ -44,9 +46,13 @@ void Game::UpdateModel()
 	{
 	case Playing:
 	{
-		level.Update(2);
+		level.Update(2); //TODO: delta time
 		bird.Control(wnd.kbd);
 		bird.Update();
+		unsigned char score_new = std::min(int(level.GetScore()), 99);
+		if (score_new > score)
+			sound_point.Play(1.0f, 0.3f);
+		score = score_new;
 		break;
 	}
 	case NotStarted:
@@ -69,10 +75,12 @@ void Game::UpdateModel()
 	if (bird.isCollidingWith(level) && gameState == Playing)
 	{
 		gameState = NoControl;
+		sound_hit.Play(1.0f, 0.3f);
 	}
-	if (bird.isOnGround())
+	if (bird.isOnGround() && gameState != GameOver)
 	{
 		gameState = GameOver;
+		sound_hit.Play(1.0f, 0.3f);
 	}
 }
 
@@ -85,13 +93,12 @@ void Game::Reset()
 void Game::DrawScore(unsigned char score)
 {
 	SpriteCodex::DrawScoreBoard(10, 10, gfx);
-	SpriteCodex::DrawNumber(score / 10, 120, 10, gfx);
-	SpriteCodex::DrawNumber(score % 10, 137, 10, gfx);
+	SpriteCodex::DrawNumber(score / 10, 120, 10, gfx); //tens
+	SpriteCodex::DrawNumber(score % 10, 137, 10, gfx); //units
 }
 
 void Game::ComposeFrame()
 {
-	unsigned char score = std::min(int(level.GetScore()), 99);
 	switch (gameState)
 	{
 	case Playing:
@@ -100,7 +107,7 @@ void Game::ComposeFrame()
 		DrawScore(score);
 		break;
 	case GameOver:
-		SpriteCodex::DrawGameOver(250, 250, gfx);
+		SpriteCodex::DrawGameOver(235, 250, gfx);
 		DrawScore(score);
 		break;
 	case NotStarted:

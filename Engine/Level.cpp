@@ -17,9 +17,9 @@ void Level::Update(int delta_x)
 	{
 		top[i].Update(delta_x);
 		bottom[i].Update(delta_x);
-		if (top[i].GetExtremeRightX() < 0)
+		if (top[i].GetExtremeRightX() < 0) //Outside the screen on the left side
 		{
-			Reset(top[i], bottom[i], 0);
+			Reset(top[i], bottom[i], 0); //Recreate on the right side
 		}
 		if (top[i].GetExtremeLeftX() < 200 && !top[i].birdPassed) //bird passed the tube
 		{
