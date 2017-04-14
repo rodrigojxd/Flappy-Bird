@@ -1,13 +1,13 @@
 #include "Rect.h"
 
-Rect::Rect(int width, int height, const Vec2& pos)
+Rect::Rect(int width, int height, const Vec2f& pos)
 {
 	this->width = width;
 	this->height = height;
 	this->pos = pos;
 }
 
-Rect::Rect(const Vec2& dimensions, const Vec2& pos)
+Rect::Rect(const Vec2& dimensions, const Vec2f& pos)
 {
 	this->width = dimensions.x;
 	this->height = dimensions.y;

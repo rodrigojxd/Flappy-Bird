@@ -26,6 +26,7 @@
 #include "Level.h"
 #include "Bird.h"
 #include "Sound.h"
+#include "FrameTimer.h"
 
 class Game
 {
@@ -62,4 +63,5 @@ private:
 	Sound sound_hit;
 	Sound sound_point;
 	unsigned char score = 0;
+	FrameTimer ft;
 };

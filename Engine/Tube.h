@@ -20,9 +20,9 @@ public:
 	Tube() = default;
 	Tube(const Vec2& body_dim, const Vec2& mouth_dim, Face face, const Vec2& pos);
 	void Draw(Graphics& gfx);
-	void Update(int delta_x);
+	void Update(float dt);
 	bool isCollidingWith(const Rect& rect) const;
-	int GetExtremeLeftX() const;
-	int GetExtremeRightX() const;
+	float GetExtremeLeftX() const;
+	float GetExtremeRightX() const;
 	bool birdPassed = false;
 };

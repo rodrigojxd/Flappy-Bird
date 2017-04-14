@@ -21,10 +21,10 @@ void Tube::Draw(Graphics& gfx)
 	gfx.DrawRect(body, color_body);
 }
 
-void Tube::Update(int delta_x)
+void Tube::Update(float dt)
 {
-	mouth.pos.x -= delta_x;
-	body.pos.x -= delta_x;
+	mouth.pos.x -= dt;
+	body.pos.x -= dt;
 }
 
 bool Tube::isCollidingWith(const Rect & rect) const
@@ -32,12 +32,12 @@ bool Tube::isCollidingWith(const Rect & rect) const
 	return mouth.isCollidingWith(rect) || body.isCollidingWith(rect);
 }
 
-int Tube::GetExtremeLeftX() const
+float Tube::GetExtremeLeftX() const
 {
 	return mouth.pos.x;
 }
 
-int Tube::GetExtremeRightX() const
+float Tube::GetExtremeRightX() const
 {
 	return mouth.pos.x + mouth.width;
 }

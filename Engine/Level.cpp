@@ -11,12 +11,12 @@ Level::Level()
 	}
 }
 
-void Level::Update(int delta_x)
+void Level::Update(float dt)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		top[i].Update(delta_x);
-		bottom[i].Update(delta_x);
+		top[i].Update(dt);
+		bottom[i].Update(dt);
 		if (top[i].GetExtremeRightX() < 0) //Outside the screen on the left side
 		{
 			Reset(top[i], bottom[i], 0); //Recreate on the right side

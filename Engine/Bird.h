@@ -9,13 +9,13 @@ public:
 	Bird() = default;
 	Bird(const Rect& rect);
 	void Draw(Graphics& gfx);
-	void Update();
+	void Update(float dt);
 	bool isCollidingWith(const class Level& level);
 	bool isOnGround();
 	void Control(const Keyboard& kbd);
 private:
 	Rect body;
 	static constexpr Color color = Colors::Yellow;
-	float vy = 10.0f;
-	unsigned char tick = 0;
+	float vy = -9.7f;
+	float tick = 0.0f;
 };

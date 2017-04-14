@@ -15,7 +15,7 @@ private:
 	void Reset(Tube& tube_top, Tube& tube_bottom, int previous);
 public:
 	Level();
-	void Update(int delta_x);
+	void Update(float dt);
 	void Draw(Graphics& gfx);
 	bool getCollided(const Rect& rect) const;
 	unsigned char GetScore();

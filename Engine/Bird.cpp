@@ -9,24 +9,26 @@ Bird::Bird(const Rect& rect)
 
 void Bird::Draw(Graphics & gfx)
 {
-	//gfx.DrawRect(body, color);
-	if (tick <= 10)
-		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 0);
-	else if(tick <= 20)
-		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 1);
-	else if(tick <= 30)
-		SpriteCodex::DrawBird(body.pos.x, body.pos.y, gfx, 2);
-	tick++;
-	if (tick > 30)
+	if (tick <= 10.0f)
+		SpriteCodex::DrawBird(body.pos, gfx, 0);
+	else if(tick <= 20.0f)
+		SpriteCodex::DrawBird(body.pos, gfx, 1);
+	else
+		SpriteCodex::DrawBird(body.pos, gfx, 2);
+	
+	if (tick > 30.0f)
 	{
-		tick = 0;
+		tick = 0.0f;
 	}
 }
 
-void Bird::Update()
+void Bird::Update(float dt)
 {
-	vy -= 1.0f;
-	body.pos.y -= int(vy);
+	tick += dt;
+
+	vy += 0.6f * dt;
+	body.pos.y += vy * dt;
+
 	//Keep the bird inside the screen
 	body.pos.y = max(body.pos.y, 0);
 	body.pos.y = min(body.pos.y, int(Graphics::ScreenHeight) - body.height);
@@ -46,6 +48,6 @@ void Bird::Control(const Keyboard& kbd)
 {
 	if (kbd.KeyIsPressed(VK_SPACE))
 	{
-		vy = 10.0f;
+		vy = -9.7f;
 	}
 }

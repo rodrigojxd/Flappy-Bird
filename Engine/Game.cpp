@@ -42,13 +42,14 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	const float dt = ft.Mark() * 60; //delta time
 	switch (gameState)
 	{
 	case Playing:
 	{
-		level.Update(2); //TODO: delta time
+		level.Update(dt * 2);
 		bird.Control(wnd.kbd);
-		bird.Update();
+		bird.Update(dt);
 		unsigned char score_new = std::min(int(level.GetScore()), 99);
 		if (score_new > score)
 			sound_point.Play(1.0f, 0.3f);
@@ -67,8 +68,8 @@ void Game::UpdateModel()
 	}
 	case NoControl:
 	{
-		level.Update(2);
-		bird.Update();
+		level.Update(dt * 2);
+		bird.Update(dt);
 		break;
 	}
 	}
